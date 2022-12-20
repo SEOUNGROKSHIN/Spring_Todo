@@ -11,4 +11,8 @@
                                                                 #{dueDate} ,
                                                                 #{writer})
     </insert>
+
+    <select id="selectAll" resultType="org.zerock.springex.domain.TodoVO">
+        SELECT * FROM TBL_TODO ORDER BY TNO DESC
+    </select>
 </mapper>
