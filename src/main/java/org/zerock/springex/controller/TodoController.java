@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.springex.dto.TodoDTO;
+import org.zerock.springex.service.TodoService;
 
 import javax.validation.Valid;
 
@@ -18,6 +19,8 @@ import javax.validation.Valid;
 @Log4j2
 @RequiredArgsConstructor
 public class TodoController {
+
+    private final TodoService todoService;
 
     @GetMapping("/list")
     public void list() {
@@ -44,6 +47,8 @@ public class TodoController {
         }
 
         log.info(todoDTO);
+
+        todoService.register(todoDTO);
 
         return "redirect:/todo/list";
     }
